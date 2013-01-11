@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Slidey | HTML5 Slide Show</title>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Slidey</h1>
+        <p>A JavaScript free slide show built to explore cutting edge HTML5 and CSS3 technologies.</p>
+    </header>
+
+    <p>
+        A browser supporting modern features such as CSS3 animations is required to properly view this slide show.
+        For the best experience the most recent version of <a href="http://www.google.com/chrome">Google Chrome</a>,
+        <a href="http://www.firefox.com">Mozilla Firefox</a> or <a href="http://www.apple.com/safari/">Apple Safari</a>
+        is recommended.
+    </p>
+
+    <div class="slideshow">
+        <input type="radio" name="controls" id="slideshow-play" checked="checked" />
+        <input type="radio" name="controls" id="slideshow-pause" />
+
+        <input type="radio" name="controls" id="dot-1" class="navigation-dots" />
+        <input type="radio" name="controls" id="dot-2" class="navigation-dots" />
+        <input type="radio" name="controls" id="dot-3" class="navigation-dots" />
+        <input type="radio" name="controls" id="dot-4" class="navigation-dots" />
+        <input type="radio" name="controls" id="dot-5" class="navigation-dots" />
+
+        <label for="slideshow-pause"></label>
+        <label for="slideshow-play"></label>
+
+        <a href="#" class="animated-dot"></a>
+        <label for="dot-1" class="navigation-dots"></label>
+        <label for="dot-2" class="navigation-dots"></label>
+        <label for="dot-3" class="navigation-dots"></label>
+        <label for="dot-4" class="navigation-dots"></label>
+        <label for="dot-5" class="navigation-dots"></label>
+
+        <div class="images">
+            <img src="img/img1.jpg" alt="'Rocknest' From Sol 52 Location"/>
+            <img src="img/img2.jpg" alt="Wall of Gale Crater"/>
+            <img src="img/img3.jpg" alt="Destination Mount Sharp"/>
+            <img src="img/img4.jpg" alt="Landing Site Panorama, with the Heights of Mount Sharp"/>
+            <img src="img/img5.jpg" alt="Layers at the Base of Mount Sharp"/>
+        </div>
+    </div>
+    <footer>
+        <p>MIT Licensed</p>
+        <p>Images from <a href="http://www.nasa.gov/mission_pages/msl/images/index.html">NASA Mars Science Laboratory</a></p>
+    </footer>
+</body>
+</html>

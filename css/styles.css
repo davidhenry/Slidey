@@ -1,0 +1,329 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+
+/*
+ * HTML5 Slide Show
+ * MIT License
+ * Copyright 2013 David Henry
+ *
+ */
+
+/* GENERAL LAYOUT & STYLES */
+
+html {
+    background: url("../img/bg.png");
+}
+
+body {
+    font-family: 'Droid Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: large;
+    color: #6f6f6f;
+    width: 680px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+a {
+    color: #0071BC;
+}
+
+header {
+    margin-bottom: 50px;
+    font-size: larger;
+}
+
+header + p {
+    font-size: 85%;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 200%;
+    margin-bottom: 15px;
+    color: #0071BC;
+}
+
+footer p {
+    float: left;
+    font-size: 75%;
+}
+
+footer p + p {
+    float: right;
+}
+
+/* SLIDESHOW LAYOUT & STYLES */
+
+.slideshow {
+    width: 680px;
+    height: 410px;
+    overflow: hidden;
+    position: relative;
+    margin: 20px auto;
+    background: #f6f6f6;
+    border: 1px solid #999;
+    border-radius: 10px;
+    background-color: #fefefe;
+    background-image:-webkit-linear-gradient(top, #fefefe, #eaeaea);
+    background-image:-moz-linear-gradient(top, #fefefe, #eaeaea);
+    background-image:-ms-linear-gradient(top, #fefefe, #eaeaea);
+    background-image:-o-linear-gradient(top, #fefefe, #eaeaea);
+    background-image:linear-gradient(top, #fefefe, #eaeaea);
+    box-shadow:inset 0 1px 2px rgba(255, 255, 255, 1), 0 1px 1px rgba(0, 0, 0, 0.085);
+}
+
+.images {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 500%;
+    height: 360px;
+    border-bottom: 1px solid #999;
+    -moz-animation: slider 25s infinite;
+    -webkit-animation: slider 25s infinite;
+    -o-animation: slider 25s infinite;
+    animation: slider 25s infinite;
+}
+
+.images img {
+    display: block;
+    float: left;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.slideshow input {
+    display: none;
+}
+
+label[for="slideshow-pause"],
+label[for="slideshow-play"] {
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+}
+
+label.navigation-dots {
+    background-color: #fefefe;
+    background-image:-webkit-linear-gradient(top, #fefefe, #eaeaea);
+    background-image:-moz-linear-gradient(top, #fefefe, #eaeaea);
+    background-image:-ms-linear-gradient(top, #fefefe, #eaeaea);
+    background-image:-o-linear-gradient(top, #fefefe, #eaeaea);
+    background-image:linear-gradient(top, #fefefe, #eaeaea);
+    cursor: pointer;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #999;
+    border-radius:8px;
+    box-shadow:inset 0 1px 2px rgba(255, 255, 255, 1), 0 1px 1px rgba(0, 0, 0, 0.085);
+    float: left;
+    margin-right: 10px;
+    margin-top: 380px;
+}
+
+label[for="dot-1"] {
+    margin-left: 280px;
+}
+
+/* SLIDESHOW LOGIC */
+
+/* Only show the animated navigation dot while the slide show animation is active */
+#slideshow-play:checked ~ .animated-dot,
+#slideshow-pause:checked ~ .animated-dot {
+    position: absolute;
+    left: 284px;
+    bottom: 20px;
+    content:'';
+    display: block;
+    z-index: 5;
+    height:6px;
+    width:6px;
+    background:#6f6f6f;
+    box-shadow: inset 0 1px 0px rgba(71, 71, 71,0.86), 0 1px 0px rgba(255, 255, 255, 1);
+    border-radius:6px;
+    -moz-animation: slide-indicator 25s linear infinite;
+    -webkit-animation: slide-indicator 25s linear infinite;
+    -o-animation: slide-indicator 25s linear infinite;
+    animation: slide-indicator 25s linear infinite;
+}
+
+/* Mark the correct navigation dot while the slide show is inactive */
+#dot-1:checked ~ label[for="dot-1"]:after,
+#dot-2:checked ~ label[for="dot-2"]:after,
+#dot-3:checked ~ label[for="dot-3"]:after,
+#dot-4:checked ~ label[for="dot-4"]:after,
+#dot-5:checked ~ label[for="dot-5"]:after,
+label.navigation-dots:hover:after {
+    content:'';
+    display: block;
+    z-index: 5;
+    height:6px;
+    width:6px;
+    background:#6f6f6f;
+    box-shadow: inset 0 1px 0px rgba(71, 71, 71,0.86), 0 1px 0px rgba(255, 255, 255, 1);
+    position:relative;
+    border-radius:6px;
+    top:3px;
+    left:3px;
+}
+
+#slideshow-play:checked ~ label[for="slideshow-pause"]:after {
+    content:url(../img/pause.png);
+}
+
+input.navigation-dots:checked ~ label[for="slideshow-play"]:after,
+#slideshow-pause:checked ~ label[for="slideshow-play"]:after  {
+    content:url(../img/play.png);
+}
+
+#slideshow-pause:checked ~ .images,
+#slideshow-pause:checked ~ .animated-dot {
+    -moz-animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+/* End slide show when a navigation dot is checked */
+input.navigation-dots:checked ~ .images,
+input.navigation-dots:checked ~ .animated-dot {
+    -moz-animation: none;
+    -webkit-animation: none;
+    -o-animation: none;
+    animation: none;
+}
+
+/* MANUAL CONTROLS */
+
+#dot-1:checked ~ .images {
+    left: 0;
+}
+
+#dot-2:checked ~ .images {
+    left: -100%;
+}
+
+#dot-3:checked ~ .images {
+    left: -200%;
+}
+
+#dot-4:checked ~ .images {
+    left: -300%;
+}
+
+#dot-5:checked ~ .images {
+    left: -400%;
+}
+
+/* ANIMATIONS */
+
+@-moz-keyframes slider {
+    0%, 19%, 100%   { left: 0; }
+    20%, 40%        { left: -100%; }
+    41%, 60%        { left: -200%; }
+    61%, 80%        { left: -300%; }
+    81%, 99%        { left: -400%; }
+}
+
+@-webkit-keyframes slider {
+    0%, 19%, 100%   { left: 0; }
+    20%, 40%        { left: -100%; }
+    41%, 60%        { left: -200%; }
+    61%, 80%        { left: -300%; }
+    81%, 99%        { left: -400%; }
+}
+
+@-o-keyframes slider {
+    0%, 19%, 100%   { left: 0; }
+    20%, 40%        { left: -100%; }
+    41%, 60%        { left: -200%; }
+    61%, 80%        { left: -300%; }
+    81%, 99%        { left: -400%; }
+}
+
+@keyframes slider {
+    0%, 19%, 100%   { left: 0; }
+    20%, 40%        { left: -100%; }
+    41%, 60%        { left: -200%; }
+    61%, 80%        { left: -300%; }
+    81%, 99%        { left: -400%; }
+}
+
+@-moz-keyframes slide-indicator {
+    0%, 18% {left: 284px; z-index: 5;}
+    20%, 39% {left: 308px; z-index: 5;}
+    41%, 59% {left: 332px; z-index: 5;}
+    61%, 79% {left: 356px; z-index: 5;}
+    81%, 99% {left: 380px; z-index: 5;}
+
+    /* Hide indicator in between transitions */
+    19%, 40%, 60%, 80%, 100% { z-index: -100;}
+}
+
+@-webkit-keyframes slide-indicator {
+    0%, 18% {left: 284px; z-index: 5;}
+    20%, 39% {left: 308px; z-index: 5;}
+    41%, 59% {left: 332px; z-index: 5;}
+    61%, 79% {left: 356px; z-index: 5;}
+    81%, 99% {left: 380px; z-index: 5;}
+
+    /* Hide indicator in between transitions */
+    19%, 40%, 60%, 80%, 100% { z-index: -100;}
+}
+
+@-o-keyframes slide-indicator {
+    0%, 18% {left: 284px; z-index: 5;}
+    20%, 39% {left: 308px; z-index: 5;}
+    41%, 59% {left: 332px; z-index: 5;}
+    61%, 79% {left: 356px; z-index: 5;}
+    81%, 99% {left: 380px; z-index: 5;}
+
+    /* Hide indicator in between transitions */
+    19%, 40%, 60%, 80%, 100% { z-index: -100;}
+}
+
+@keyframes slide-indicator {
+    0%, 18% {left: 284px; z-index: 5;}
+    20%, 39% {left: 308px; z-index: 5;}
+    41%, 59% {left: 332px; z-index: 5;}
+    61%, 79% {left: 356px; z-index: 5;}
+    81%, 99% {left: 380px; z-index: 5;}
+
+    /* Hide indicator in between transitions */
+    19%, 40%, 60%, 80%, 100% { z-index: -100;}
+}
